@@ -126,7 +126,7 @@ trait HasHistory
     {
         return collect($this->getDirty())->reject(function ($newValue, string $key) {
             return in_array($key, $this->getIgnored());
-        })->reduceWithKeys(function (Collection $carry, $newValue, string $key) {
+        })->reduce(function (Collection $carry, $newValue, string $key) {
             $original = $carry->get('original', $this->newInstance());
             $updated = $carry->get('updated', $this->newInstance());
             // Use getOriginal() and getAttribute() to ensure that
