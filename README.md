@@ -1,6 +1,6 @@
 # Track changes to Laravel models
 
-[![Build Status](https://app.travis-ci.com/audunru/model-history.svg?branch=master)](https://app.travis-ci.com/audunru/model-history)
+[![Build Status](https://github.com/audunru/model-history/actions/workflows/validate.yml/badge.svg)](https://github.com/audunru/model-history/actions/workflows/validate.yml)
 [![Coverage Status](https://coveralls.io/repos/github/audunru/model-history/badge.svg?branch=master)](https://coveralls.io/github/audunru/model-history?branch=master)
 [![StyleCI](https://github.styleci.io/repos/407974250/shield?branch=master)](https://github.styleci.io/repos/407974250)
 

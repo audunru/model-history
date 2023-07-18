@@ -22,14 +22,14 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'description'                => $this->faker->sentence,
-            'purchased_at'               => $this->faker->dateTimeThisYear->setTime(0, 0),
+            'description'                => $this->faker->sentence(),
+            'purchased_at'               => $this->faker->dateTimeThisYear()->setTime(0, 0),
             'gross_cost'                 => $this->faker->numberBetween(100, 1000),
             'tax_rate'                   => $this->faker->numberBetween(0, 25),
-            'seller_name'                => $this->faker->name,
-            'seller_address'             => $this->faker->address,
-            'seller_phone'               => $this->faker->phoneNumber,
-            'seller_identification'      => $this->faker->word,
+            'seller_name'                => $this->faker->name(),
+            'seller_address'             => $this->faker->address(),
+            'seller_phone'               => $this->faker->phoneNumber(),
+            'seller_identification'      => $this->faker->word(),
         ];
     }
 }
