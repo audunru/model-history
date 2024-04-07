@@ -110,7 +110,7 @@ trait HasHistory
     /**
      * Add change to model's history.
      *
-     * @return \Illuminate\Database\Eloquent\Model|false
+     * @return Model|false
      */
     public function addChange(Change $change): bool|Model
     {
