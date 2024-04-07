@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0](https://github.com/audunru/model-history/compare/v1.0.1...v2.0.0) (2024-04-07)
+
+
+### Features
+
+* laravel 11 support ([#8](https://github.com/audunru/model-history/issues/8)) ([b5760e9](https://github.com/audunru/model-history/commit/b5760e9600518de056336596cd7d70598095ea47))
+
+
+### Miscellaneous Chores
+
+* release 2.0.0 ([c4b7b27](https://github.com/audunru/model-history/commit/c4b7b27bacb5606830543b1d7534d9526ed16aaa))
+
 ## [1.0.1](https://github.com/audunru/model-history/compare/v1.0.0...v1.0.1) (2024-04-07)
 
 
