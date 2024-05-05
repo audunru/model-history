@@ -23,9 +23,9 @@ class History extends JsonResource
             'id'          => $this->id,
             'changes'     => $this->changes,
             'owner'       => [
-                'id'    => $this->owner->id,
-                'name'  => $this->owner->name,
-                'email' => $this->owner->email,
+                'id'    => $this->owner?->id,
+                'name'  => $this->owner?->name,
+                'email' => $this->owner?->email,
             ],
             'created_at' => $this->created_at->format($dateFormat),
             'updated_at' => $this->updated_at->format($dateFormat),

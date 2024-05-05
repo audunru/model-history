@@ -2,18 +2,13 @@
 
 namespace audunru\ModelHistory\Models;
 
-use Database\Factories\ChangeFactory;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Change extends Model
 {
-    use HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -63,14 +58,6 @@ class Change extends Model
         static::addGlobalScope('order', function (Builder $builder) {
             $builder->orderBy('created_at', 'desc');
         });
-    }
-
-    /**
-     * Create a new factory instance for the model.
-     */
-    protected static function newFactory(): Factory
-    {
-        return ChangeFactory::new();
     }
 
     /**
