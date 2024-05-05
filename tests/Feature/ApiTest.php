@@ -93,6 +93,22 @@ class ApiTest extends TestCase
             ]]]);
     }
 
+    public function testItGetsHistoryAfterDeletingUser()
+    {
+        $this->user->delete();
+        $response = $this->json('GET', '/history');
+
+        $response
+            ->assertStatus(200)
+            ->assertJson(['data' => [[
+                'owner' => [
+                    'id'    => null,
+                    'name'  => null,
+                    'email' => null,
+                ],
+            ]]]);
+    }
+
     public function testItChangesTheDateFormat()
     {
         $originalDateFormat = config('model-history.date_format');
