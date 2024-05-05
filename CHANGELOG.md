@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/audunru/model-history/compare/v2.0.0...v2.0.1) (2024-05-05)
+
+
+### Bug Fixes
+
+* history can be returned from API even if change owner is deleted ([#11](https://github.com/audunru/model-history/issues/11)) ([8f1332d](https://github.com/audunru/model-history/commit/8f1332dfc1ee38f378aa095a39035023c42660fe))
+
 ## [2.0.0](https://github.com/audunru/model-history/compare/v1.0.1...v2.0.0) (2024-04-07)
 
 
