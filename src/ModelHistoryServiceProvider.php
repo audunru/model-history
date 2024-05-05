@@ -22,7 +22,7 @@ class ModelHistoryServiceProvider extends PackageServiceProvider
     {
         Event::listen(
             HistoryChanged::class,
-            [RecordHistoryChange::class, 'handle']
+            RecordHistoryChange::class
         );
     }
 }
