@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.2](https://github.com/audunru/model-history/compare/v2.0.1...v2.0.2) (2024-05-20)
+
+
+### Miscellaneous Chores
+
+* parallel php-cs-fixer ([bda77ae](https://github.com/audunru/model-history/commit/bda77ae6754bcfb6550c381b80ea2750f0001477))
+* update dependencies ([d3fe461](https://github.com/audunru/model-history/commit/d3fe461c2c504bc00cf82d5eb486bc50c74751ec))
+
 ## [2.0.1](https://github.com/audunru/model-history/compare/v2.0.0...v2.0.1) (2024-05-05)
 
 
