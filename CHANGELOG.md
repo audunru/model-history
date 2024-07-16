@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/audunru/model-history/compare/v2.0.2...v2.1.0) (2024-07-16)
+
+
+### Features
+
+* stronger phpdoc typehints ([#15](https://github.com/audunru/model-history/issues/15)) ([63107c3](https://github.com/audunru/model-history/commit/63107c3e1af475c9a58b5b715e08fc1389c7d8dc))
+
+
+### Miscellaneous Chores
+
+* update dependencies ([7007309](https://github.com/audunru/model-history/commit/700730980a52f3d7fe8566dc3e9d3157adc09cf3))
+
 ## [2.0.2](https://github.com/audunru/model-history/compare/v2.0.1...v2.0.2) (2024-05-20)
 
 
