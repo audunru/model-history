@@ -74,6 +74,8 @@ trait HasHistory
      * Set the ignored attributes for the model.
      *
      * @param string[] $ignored
+     *
+     * @return $this
      */
     public function setIgnored(array $ignored): self
     {
@@ -86,6 +88,8 @@ trait HasHistory
      * Ignore a field.
      *
      * @param string[]|string $field
+     *
+     * @return $this
      */
     public function addIgnored(array|string $field): self
     {
