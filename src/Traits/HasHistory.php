@@ -10,6 +10,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ */
 trait HasHistory
 {
     public static function bootHasHistory(): void
@@ -51,24 +54,28 @@ trait HasHistory
     }
 
     /**
-     * Changes to these attributes will not be recored in history.
+     * Changes to these attributes will not be recorded in history.
      *
-     * @var list<string>
+     * @var string[]
      */
     protected array $ignored = [];
 
     /**
      * Get the ignored attributes for the model.
      *
-     * @return list<string>
+     * @return string[]
      */
-    public function getIgnored()
+    public function getIgnored(): array
     {
         return $this->ignored;
     }
 
     /**
      * Set the ignored attributes for the model.
+     *
+     * @param string[] $ignored
+     *
+     * @return $this
      */
     public function setIgnored(array $ignored): self
     {
@@ -80,9 +87,11 @@ trait HasHistory
     /**
      * Ignore a field.
      *
-     * @param list<string> $field
+     * @param string[]|string $field
+     *
+     * @return $this
      */
-    public function addIgnored($field): self
+    public function addIgnored(array|string $field): self
     {
         is_array($field)
             ? $this->setIgnored([...$this->getIgnored(), ...$field])
@@ -93,6 +102,8 @@ trait HasHistory
 
     /**
      * Get history of this model.
+     *
+     * @return MorphMany<Change, $this>
      */
     public function history(): MorphMany
     {
@@ -110,9 +121,9 @@ trait HasHistory
     /**
      * Add change to model's history.
      *
-     * @return Model|false
+     * @return $this|false
      */
-    public function addChange(Change $change): bool|Model
+    public function addChange(Change $change): Model|false
     {
         return $this->history()->save($change);
     }

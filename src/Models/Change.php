@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+/**
+ * @template TChangedModel of \Illuminate\Database\Eloquent\Model
+ * @template TOwnerModel of \Illuminate\Database\Eloquent\Model
+ */
 class Change extends Model
 {
     /**
@@ -74,6 +78,8 @@ class Change extends Model
 
     /**
      * Get changed model.
+     *
+     * @return MorphTo<TChangedModel, $this>
      */
     public function model(): MorphTo
     {
@@ -82,6 +88,8 @@ class Change extends Model
 
     /**
      * Get owner that made the change.
+     *
+     * @return MorphTo<TOwnerModel, $this>
      */
     public function owner(): MorphTo
     {
