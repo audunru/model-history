@@ -53,22 +53,24 @@ trait HasHistory
     /**
      * Changes to these attributes will not be recored in history.
      *
-     * @var list<string>
+     * @var string[]
      */
     protected array $ignored = [];
 
     /**
      * Get the ignored attributes for the model.
      *
-     * @return list<string>
+     * @return string[]
      */
-    public function getIgnored()
+    public function getIgnored(): array
     {
         return $this->ignored;
     }
 
     /**
      * Set the ignored attributes for the model.
+     *
+     * @param string[] $ignored
      */
     public function setIgnored(array $ignored): self
     {
@@ -80,9 +82,9 @@ trait HasHistory
     /**
      * Ignore a field.
      *
-     * @param list<string> $field
+     * @param string[]|string $field
      */
-    public function addIgnored($field): self
+    public function addIgnored(array|string $field): self
     {
         is_array($field)
             ? $this->setIgnored([...$this->getIgnored(), ...$field])
