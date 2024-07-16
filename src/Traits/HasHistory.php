@@ -10,6 +10,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ */
 trait HasHistory
 {
     public static function bootHasHistory(): void
@@ -51,7 +54,7 @@ trait HasHistory
     }
 
     /**
-     * Changes to these attributes will not be recored in history.
+     * Changes to these attributes will not be recorded in history.
      *
      * @var string[]
      */
@@ -95,6 +98,8 @@ trait HasHistory
 
     /**
      * Get history of this model.
+     *
+     * @return MorphMany<Change, $this>
      */
     public function history(): MorphMany
     {
@@ -112,9 +117,9 @@ trait HasHistory
     /**
      * Add change to model's history.
      *
-     * @return Model|false
+     * @return $this|false
      */
-    public function addChange(Change $change): bool|Model
+    public function addChange(Change $change): Model|false
     {
         return $this->history()->save($change);
     }
