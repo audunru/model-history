@@ -51,7 +51,7 @@ class ApiTest extends TestCase
         $response = $this->json('GET', '/history');
 
         $response
-            ->assertStatus(200)
+            ->assertOk()
             ->assertJsonStructure(['data' => [[
                 'id',
                 'changes',
@@ -99,7 +99,7 @@ class ApiTest extends TestCase
         $response = $this->json('GET', '/history');
 
         $response
-            ->assertStatus(200)
+            ->assertOk()
             ->assertJson(['data' => [[
                 'owner' => [
                     'id'    => null,
@@ -118,7 +118,7 @@ class ApiTest extends TestCase
         $response = $this->json('GET', '/history');
 
         $response
-        ->assertStatus(200)
+        ->assertOk()
         ->assertJson(['data' => [[
             'created_at' => '13.10.2019',
             'updated_at' => '13.10.2019',

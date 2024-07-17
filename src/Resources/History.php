@@ -2,6 +2,7 @@
 
 namespace audunru\ModelHistory\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class History extends JsonResource
@@ -10,12 +11,8 @@ class History extends JsonResource
      * Transform the resource into an array.
      *
      * @SuppressWarnings("unused")
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
      */
-    public function toArray($request)
+    public function toArray(Request $request): array
     {
         $dateFormat = config('model-history.date_format', 'Y-m-d H:i:s');
 
