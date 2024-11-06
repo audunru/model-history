@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/audunru/model-history/compare/v2.1.0...v2.1.1) (2024-11-06)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump the composer group across 1 directory with 2 updates ([#17](https://github.com/audunru/model-history/issues/17)) ([e1d4295](https://github.com/audunru/model-history/commit/e1d4295a281cb1ef12d6fab9f29ded063bd73275))
+
 ## [2.1.0](https://github.com/audunru/model-history/compare/v2.0.2...v2.1.0) (2024-07-16)
 
 
