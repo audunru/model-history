@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.2](https://github.com/audunru/model-history/compare/v2.1.1...v2.1.2) (2024-12-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump laravel/framework ([#19](https://github.com/audunru/model-history/issues/19)) ([2c2a8d4](https://github.com/audunru/model-history/commit/2c2a8d49e29dad02d44c20a4f245467d5a5722d1))
+* **deps:** bump league/commonmark ([#21](https://github.com/audunru/model-history/issues/21)) ([588a759](https://github.com/audunru/model-history/commit/588a759818eb844472911c8a2ab953639117fa1b))
+
 ## [2.1.1](https://github.com/audunru/model-history/compare/v2.1.0...v2.1.1) (2024-11-06)
 
 
