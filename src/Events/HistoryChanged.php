@@ -29,7 +29,7 @@ class HistoryChanged
         /*
          * The model that made the change.
          */
-        public Model $owner
+        public Model $owner,
     ) {
     }
 }
