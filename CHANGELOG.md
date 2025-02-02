@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.3](https://github.com/audunru/model-history/compare/v2.1.2...v2.1.3) (2025-02-01)
+
+
+### Miscellaneous Chores
+
+* dependabot config ([11bf1fd](https://github.com/audunru/model-history/commit/11bf1fdabd885b958b374a10f2044f08791ac156))
+* **deps-dev:** bump fakerphp/faker from 1.23.1 to 1.24.1 ([#23](https://github.com/audunru/model-history/issues/23)) ([f5c62ea](https://github.com/audunru/model-history/commit/f5c62eaed396756c8a5ab26b4f6123a9816f8c9a))
+* **deps-dev:** bump orchestra/testbench from 9.2.0 to 9.9.0 ([#24](https://github.com/audunru/model-history/issues/24)) ([41cf268](https://github.com/audunru/model-history/commit/41cf268647fa59bc0ed94f9b7c3b9a91d054dc9e))
+* **deps:** bump laravel/framework from 11.31.0 to 11.41.3 ([#26](https://github.com/audunru/model-history/issues/26)) ([d44cc02](https://github.com/audunru/model-history/commit/d44cc02b94877c8cbced6deb673f84f776b03935))
+
 ## [2.1.2](https://github.com/audunru/model-history/compare/v2.1.1...v2.1.2) (2024-12-10)
 
 
