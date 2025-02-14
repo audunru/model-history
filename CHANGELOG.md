@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.4](https://github.com/audunru/model-history/compare/v2.1.3...v2.1.4) (2025-02-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump spatie/laravel-package-tools from 1.18.3 to 1.19.0 ([#27](https://github.com/audunru/model-history/issues/27)) ([7ac22ad](https://github.com/audunru/model-history/commit/7ac22ad72969d4eca18161cd5c8398dfb6269a6a))
+
 ## [2.1.3](https://github.com/audunru/model-history/compare/v2.1.2...v2.1.3) (2025-02-01)
 
 
