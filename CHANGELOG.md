@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.1.5](https://github.com/audunru/model-history/compare/v2.1.4...v2.1.5) (2025-02-24)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#33](https://github.com/audunru/model-history/issues/33)) ([dd2fab2](https://github.com/audunru/model-history/commit/dd2fab2990e3b5ae3f1dc473f1a4261e138e38cb))
+* **deps-dev:** bump friendsofphp/php-cs-fixer from 3.68.5 to 3.69.0 ([#30](https://github.com/audunru/model-history/issues/30)) ([f2de067](https://github.com/audunru/model-history/commit/f2de0678a91d92d2b6846aefa376670dcb822471))
+* **deps-dev:** bump orchestra/testbench from 9.9.0 to 9.10.0 ([#31](https://github.com/audunru/model-history/issues/31)) ([9d1cfdd](https://github.com/audunru/model-history/commit/9d1cfddd59c2f65531d6d954bccb54e354273081))
+
 ## [2.1.4](https://github.com/audunru/model-history/compare/v2.1.3...v2.1.4) (2025-02-14)
 
 
