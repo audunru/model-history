@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.6](https://github.com/audunru/model-history/compare/v2.1.5...v2.1.6) (2025-03-15)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#36](https://github.com/audunru/model-history/issues/36)) ([d941071](https://github.com/audunru/model-history/commit/d941071a2d5c15115a5ba93cd24c1175315e5513))
+
 ## [2.1.5](https://github.com/audunru/model-history/compare/v2.1.4...v2.1.5) (2025-03-07)
 
 
