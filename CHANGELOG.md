@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.0.0](https://github.com/audunru/model-history/compare/v2.1.5...v3.0.0) (2025-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* laravel 12 support ([#40](https://github.com/audunru/model-history/issues/40))
+
+### Features
+
+* laravel 12 support ([#40](https://github.com/audunru/model-history/issues/40)) ([65b1669](https://github.com/audunru/model-history/commit/65b1669aeddba710f8223954412e5a5227e12fe4))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#36](https://github.com/audunru/model-history/issues/36)) ([d941071](https://github.com/audunru/model-history/commit/d941071a2d5c15115a5ba93cd24c1175315e5513))
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#38](https://github.com/audunru/model-history/issues/38)) ([33fd7c7](https://github.com/audunru/model-history/commit/33fd7c72111e5a0000d360b3b6ab3d4ee5920b30))
+* rename master branch to main ([1232a43](https://github.com/audunru/model-history/commit/1232a4364f61d7fab0f8124e1cb3b0d4c6b7437f))
+
 ## [2.1.5](https://github.com/audunru/model-history/compare/v2.1.4...v2.1.5) (2025-03-07)
 
 
