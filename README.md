@@ -1,8 +1,8 @@
 # Track changes to Laravel models
 
 [![Build Status](https://github.com/audunru/model-history/actions/workflows/validate.yml/badge.svg)](https://github.com/audunru/model-history/actions/workflows/validate.yml)
-[![Coverage Status](https://coveralls.io/repos/github/audunru/model-history/badge.svg?branch=master)](https://coveralls.io/github/audunru/model-history?branch=master)
-[![StyleCI](https://github.styleci.io/repos/407974250/shield?branch=master)](https://github.styleci.io/repos/407974250)
+[![Coverage Status](https://coveralls.io/repos/github/audunru/model-history/badge.svg?branch=main)](https://coveralls.io/github/audunru/model-history?branch=main)
+[![StyleCI](https://github.styleci.io/repos/407974250/shield?branch=main)](https://github.styleci.io/repos/407974250)
 
 Keep a record of changes to models in your application. If a user changes the name of a product from A to B, that change will be stored in a `Change` model and stored in your database. Only the changed attributes are stored. You can then use this to retrieve the model's history, including which user made the change.
 
