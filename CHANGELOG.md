@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.0.1](https://github.com/audunru/model-history/compare/v3.0.0...v3.0.1) (2025-06-07)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#42](https://github.com/audunru/model-history/issues/42)) ([801a3c1](https://github.com/audunru/model-history/commit/801a3c13aa1ebefc93b89aaab18c416e75f7b2be))
+* **deps-dev:** bump the development-dependencies group across 1 directory with 3 updates ([#47](https://github.com/audunru/model-history/issues/47)) ([05c371a](https://github.com/audunru/model-history/commit/05c371af91b83416e39eecbfbcf1b3572a1c0d8c))
+* **deps:** bump laravel/framework in the production-dependencies group ([#48](https://github.com/audunru/model-history/issues/48)) ([2e3dbcc](https://github.com/audunru/model-history/commit/2e3dbccf4cf033c9665a6bb823514052979a5a6d))
+* **deps:** bump league/commonmark in the composer group ([#46](https://github.com/audunru/model-history/issues/46)) ([afdb718](https://github.com/audunru/model-history/commit/afdb71816f150e66675d8c3af85b22c2dda644bc))
+* **deps:** bump the production-dependencies group with 2 updates ([#41](https://github.com/audunru/model-history/issues/41)) ([63a4b80](https://github.com/audunru/model-history/commit/63a4b808c887c3bbb96dbc3f3d710083b72c7b18))
+* **deps:** bump the production-dependencies group with 2 updates ([#44](https://github.com/audunru/model-history/issues/44)) ([6a60509](https://github.com/audunru/model-history/commit/6a60509df77ae88ce71e8634672f702f98e571a6))
+
 ## [3.0.0](https://github.com/audunru/model-history/compare/v2.1.5...v3.0.0) (2025-03-16)
 
 
