@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.2](https://github.com/audunru/model-history/compare/v3.0.1...v3.0.2) (2025-07-03)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump the development-dependencies group with 3 updates ([#49](https://github.com/audunru/model-history/issues/49)) ([dc3f31a](https://github.com/audunru/model-history/commit/dc3f31a3e52be06a142d1cb548050c4921548e5e))
+* **deps:** bump laravel/framework in the production-dependencies group ([#50](https://github.com/audunru/model-history/issues/50)) ([694fae7](https://github.com/audunru/model-history/commit/694fae79c75bf47378a1a57915c37e840a8471d2))
+
 ## [3.0.1](https://github.com/audunru/model-history/compare/v3.0.0...v3.0.1) (2025-06-07)
 
 
