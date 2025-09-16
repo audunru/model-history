@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.0.2](https://github.com/audunru/model-history/compare/v3.0.1...v3.0.2) (2025-09-16)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#53](https://github.com/audunru/model-history/issues/53)) ([b3324af](https://github.com/audunru/model-history/commit/b3324af1243cf34ffa6e8f9600696895f142ea22))
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#59](https://github.com/audunru/model-history/issues/59)) ([d4f0602](https://github.com/audunru/model-history/commit/d4f0602f3232c164209e1347e47dd984f121a3df))
+* **deps-dev:** bump the development-dependencies group with 3 updates ([#49](https://github.com/audunru/model-history/issues/49)) ([dc3f31a](https://github.com/audunru/model-history/commit/dc3f31a3e52be06a142d1cb548050c4921548e5e))
+* **deps-dev:** bump the development-dependencies group with 3 updates ([#55](https://github.com/audunru/model-history/issues/55)) ([efb327b](https://github.com/audunru/model-history/commit/efb327b9f36cfbcd09ac9bf430bb91ab022bb238))
+* **deps:** bump actions/checkout from 4 to 5 ([#57](https://github.com/audunru/model-history/issues/57)) ([4ab1bbe](https://github.com/audunru/model-history/commit/4ab1bbe44fdf4ef855d0f34b62295007e9a73a06))
+* **deps:** bump amannn/action-semantic-pull-request from 5 to 6 ([#56](https://github.com/audunru/model-history/issues/56)) ([74610ae](https://github.com/audunru/model-history/commit/74610ae227cdba824c415d31c5d0d5a5be4d7c54))
+* **deps:** bump laravel/framework in the production-dependencies group ([#50](https://github.com/audunru/model-history/issues/50)) ([694fae7](https://github.com/audunru/model-history/commit/694fae79c75bf47378a1a57915c37e840a8471d2))
+* **deps:** bump laravel/framework in the production-dependencies group ([#54](https://github.com/audunru/model-history/issues/54)) ([e85f22d](https://github.com/audunru/model-history/commit/e85f22d1928b9ed45e5913ac6cfc20ffc86b3251))
+* **deps:** bump laravel/framework in the production-dependencies group ([#58](https://github.com/audunru/model-history/issues/58)) ([da5dde2](https://github.com/audunru/model-history/commit/da5dde2845f374a0b3b9fadcfda99d3218410488))
+* **deps:** bump the production-dependencies group with 2 updates ([#52](https://github.com/audunru/model-history/issues/52)) ([1ad8ce4](https://github.com/audunru/model-history/commit/1ad8ce476e5cec622dfe0edf2ca1f446069c770c))
+
 ## [3.0.1](https://github.com/audunru/model-history/compare/v3.0.0...v3.0.1) (2025-06-07)
 
 
