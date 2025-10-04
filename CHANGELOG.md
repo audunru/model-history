@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.3](https://github.com/audunru/model-history/compare/v3.0.2...v3.0.3) (2025-10-02)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump friendsofphp/php-cs-fixer ([#61](https://github.com/audunru/model-history/issues/61)) ([809f6bd](https://github.com/audunru/model-history/commit/809f6bdffb47bf0159544068cdb2b0bbca6a523d))
+* **deps:** bump laravel/framework in the production-dependencies group ([#60](https://github.com/audunru/model-history/issues/60)) ([ad1fe7d](https://github.com/audunru/model-history/commit/ad1fe7dad5a14fb2ccfcef4066867e33bd838022))
+
 ## [3.0.2](https://github.com/audunru/model-history/compare/v3.0.1...v3.0.2) (2025-09-16)
 
 
