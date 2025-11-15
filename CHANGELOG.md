@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/audunru/model-history/compare/v3.0.4...v3.0.5) (2025-11-15)
+
+
+### Bug Fixes
+
+* force semantic release ([69d00d8](https://github.com/audunru/model-history/commit/69d00d81ca340a81d8e9b05b324e7be18be5cd22))
+
 # Changelog
 
 ## [3.0.3](https://github.com/audunru/model-history/compare/v3.0.2...v3.0.3) (2025-10-02)
