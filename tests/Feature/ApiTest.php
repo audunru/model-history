@@ -13,6 +13,7 @@ class ApiTest extends TestCase
     use RefreshDatabase;
 
     protected User $user;
+
     protected Product $product;
 
     protected function setUp(): void
@@ -24,29 +25,29 @@ class ApiTest extends TestCase
         $this->user = User::factory()->create();
         $this->be($this->user);
         $this->product = Product::factory()->create([
-            'description'                => 'Old description',
-            'purchased_at'               => '2021-01-14',
-            'gross_cost'                 => 100,
-            'tax_rate'                   => 0,
-            'seller_name'                => 'Old seller name',
-            'seller_address'             => 'Old seller address',
-            'seller_phone'               => 'Old seller phone',
-            'seller_identification'      => 'Old seller identification',
+            'description' => 'Old description',
+            'purchased_at' => '2021-01-14',
+            'gross_cost' => 100,
+            'tax_rate' => 0,
+            'seller_name' => 'Old seller name',
+            'seller_address' => 'Old seller address',
+            'seller_phone' => 'Old seller phone',
+            'seller_identification' => 'Old seller identification',
         ]);
 
         $this->product->update([
-            'description'                => 'New description',
-            'purchased_at'               => '2021-01-15',
-            'gross_cost'                 => 200,
-            'tax_rate'                   => 25,
-            'seller_name'                => 'New seller name',
-            'seller_address'             => 'New seller address',
-            'seller_phone'               => 'New seller phone',
-            'seller_identification'      => 'New seller identification',
+            'description' => 'New description',
+            'purchased_at' => '2021-01-15',
+            'gross_cost' => 200,
+            'tax_rate' => 25,
+            'seller_name' => 'New seller name',
+            'seller_address' => 'New seller address',
+            'seller_phone' => 'New seller phone',
+            'seller_identification' => 'New seller identification',
         ]);
     }
 
-    public function testItGetsHistory()
+    public function test_it_gets_history()
     {
         $response = $this->json('GET', '/history');
 
@@ -60,32 +61,32 @@ class ApiTest extends TestCase
                 'updated_at',
             ]]])
             ->assertExactJson(['data' => [[
-                'id'      => 1,
+                'id' => 1,
                 'changes' => [
                     'original' => [
-                        'description'           => 'Old description',
-                        'purchased_at'          => '2021-01-14',
-                        'gross_cost'            => 100,
-                        'tax_rate'              => 0,
-                        'seller_name'           => 'Old seller name',
-                        'seller_address'        => 'Old seller address',
-                        'seller_phone'          => 'Old seller phone',
+                        'description' => 'Old description',
+                        'purchased_at' => '2021-01-14',
+                        'gross_cost' => 100,
+                        'tax_rate' => 0,
+                        'seller_name' => 'Old seller name',
+                        'seller_address' => 'Old seller address',
+                        'seller_phone' => 'Old seller phone',
                         'seller_identification' => 'Old seller identification',
                     ],
                     'updated' => [
-                        'description'           => 'New description',
-                        'purchased_at'          => '2021-01-15',
-                        'gross_cost'            => 200,
-                        'tax_rate'              => 25,
-                        'seller_name'           => 'New seller name',
-                        'seller_address'        => 'New seller address',
-                        'seller_phone'          => 'New seller phone',
+                        'description' => 'New description',
+                        'purchased_at' => '2021-01-15',
+                        'gross_cost' => 200,
+                        'tax_rate' => 25,
+                        'seller_name' => 'New seller name',
+                        'seller_address' => 'New seller address',
+                        'seller_phone' => 'New seller phone',
                         'seller_identification' => 'New seller identification',
                     ],
                 ],
                 'owner' => [
-                    'id'    => $this->user->id,
-                    'name'  => $this->user->name,
+                    'id' => $this->user->id,
+                    'name' => $this->user->name,
                     'email' => $this->user->email,
                 ],
                 'created_at' => '2019-10-13 12:13:14',
@@ -93,7 +94,7 @@ class ApiTest extends TestCase
             ]]]);
     }
 
-    public function testItGetsHistoryAfterDeletingUser()
+    public function test_it_gets_history_after_deleting_user()
     {
         $this->user->delete();
         $response = $this->json('GET', '/history');
@@ -102,14 +103,14 @@ class ApiTest extends TestCase
             ->assertOk()
             ->assertJson(['data' => [[
                 'owner' => [
-                    'id'    => null,
-                    'name'  => null,
+                    'id' => null,
+                    'name' => null,
                     'email' => null,
                 ],
             ]]]);
     }
 
-    public function testItChangesTheDateFormat()
+    public function test_it_changes_the_date_format()
     {
         $originalDateFormat = config('model-history.date_format');
 
@@ -118,11 +119,11 @@ class ApiTest extends TestCase
         $response = $this->json('GET', '/history');
 
         $response
-        ->assertOk()
-        ->assertJson(['data' => [[
-            'created_at' => '13.10.2019',
-            'updated_at' => '13.10.2019',
-        ]]]);
+            ->assertOk()
+            ->assertJson(['data' => [[
+                'created_at' => '13.10.2019',
+                'updated_at' => '13.10.2019',
+            ]]]);
 
         config(['model-history.date_format' => $originalDateFormat]);
     }

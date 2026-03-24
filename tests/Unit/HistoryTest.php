@@ -16,52 +16,52 @@ class HistoryTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testItRecordsAProductChangeInHistory()
+    public function test_it_records_a_product_change_in_history()
     {
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'description'                => 'Old description',
-            'purchased_at'               => '2021-01-14',
-            'gross_cost'                 => 100,
-            'tax_rate'                   => 0,
-            'seller_name'                => 'Old seller name',
-            'seller_address'             => 'Old seller address',
-            'seller_phone'               => 'Old seller phone',
-            'seller_identification'      => 'Old seller identification',
+            'description' => 'Old description',
+            'purchased_at' => '2021-01-14',
+            'gross_cost' => 100,
+            'tax_rate' => 0,
+            'seller_name' => 'Old seller name',
+            'seller_address' => 'Old seller address',
+            'seller_phone' => 'Old seller phone',
+            'seller_identification' => 'Old seller identification',
         ]);
 
         $product->update([
-            'description'                => 'New description',
-            'purchased_at'               => '2021-01-15',
-            'gross_cost'                 => 200,
-            'tax_rate'                   => 25,
-            'seller_name'                => 'New seller name',
-            'seller_address'             => 'New seller address',
-            'seller_phone'               => 'New seller phone',
-            'seller_identification'      => 'New seller identification',
+            'description' => 'New description',
+            'purchased_at' => '2021-01-15',
+            'gross_cost' => 200,
+            'tax_rate' => 25,
+            'seller_name' => 'New seller name',
+            'seller_address' => 'New seller address',
+            'seller_phone' => 'New seller phone',
+            'seller_identification' => 'New seller identification',
         ]);
 
         $expectedChanges = [
             'original' => [
-                'description'                => 'Old description',
-                'purchased_at'               => '2021-01-14',
-                'gross_cost'                 => 100,
-                'tax_rate'                   => 0,
-                'seller_name'                => 'Old seller name',
-                'seller_address'             => 'Old seller address',
-                'seller_phone'               => 'Old seller phone',
-                'seller_identification'      => 'Old seller identification',
+                'description' => 'Old description',
+                'purchased_at' => '2021-01-14',
+                'gross_cost' => 100,
+                'tax_rate' => 0,
+                'seller_name' => 'Old seller name',
+                'seller_address' => 'Old seller address',
+                'seller_phone' => 'Old seller phone',
+                'seller_identification' => 'Old seller identification',
             ],
             'updated' => [
-                'description'                => 'New description',
-                'purchased_at'               => '2021-01-15',
-                'gross_cost'                 => 200,
-                'tax_rate'                   => 25,
-                'seller_name'                => 'New seller name',
-                'seller_address'             => 'New seller address',
-                'seller_phone'               => 'New seller phone',
-                'seller_identification'      => 'New seller identification',
+                'description' => 'New description',
+                'purchased_at' => '2021-01-15',
+                'gross_cost' => 200,
+                'tax_rate' => 25,
+                'seller_name' => 'New seller name',
+                'seller_address' => 'New seller address',
+                'seller_phone' => 'New seller phone',
+                'seller_identification' => 'New seller identification',
             ],
         ];
 
@@ -80,13 +80,13 @@ class HistoryTest extends TestCase
         $this->assertEquals($expectedChanges, $userChange->changes);
     }
 
-    public function testItRecordsAllChangesToProduct()
+    public function test_it_records_all_changes_to_product()
     {
         $user = User::factory()->create();
         $this->be($user);
         $this->travelTo(Carbon::create(2020, 1, 1, 0, 0, 0, 'UTC'));
         $product = Product::factory()->create([
-            'description'    => 'Old description',
+            'description' => 'Old description',
         ]);
 
         // Travel forward 1 second to ensure that updated_at also changes
@@ -94,17 +94,17 @@ class HistoryTest extends TestCase
 
         $product->setIgnored([]);
         $product->update([
-            'description'    => 'New description',
+            'description' => 'New description',
         ]);
 
         $expectedChanges = [
             'original' => [
                 'description' => 'Old description',
-                'updated_at'  => '2020-01-01T00:00:00.000000Z',
+                'updated_at' => '2020-01-01T00:00:00.000000Z',
             ],
             'updated' => [
                 'description' => 'New description',
-                'updated_at'  => '2020-01-01T00:00:01.000000Z',
+                'updated_at' => '2020-01-01T00:00:01.000000Z',
             ],
         ];
 
@@ -112,7 +112,7 @@ class HistoryTest extends TestCase
         $this->assertEquals($expectedChanges, $productChange->changes);
     }
 
-    public function testItRecordsSoftDelete()
+    public function test_it_records_soft_delete()
     {
         $user = User::factory()->create();
         $this->be($user);
@@ -123,10 +123,10 @@ class HistoryTest extends TestCase
 
         $expectedChanges = [
             'original' => [
-                'deleted_at'  => null,
+                'deleted_at' => null,
             ],
             'updated' => [
-                'deleted_at'  => '2020-01-01T00:00:00.000000Z',
+                'deleted_at' => '2020-01-01T00:00:00.000000Z',
             ],
         ];
 
@@ -134,7 +134,7 @@ class HistoryTest extends TestCase
         $this->assertEquals($expectedChanges, $productChange->changes);
     }
 
-    public function testItRecordsProductRestore()
+    public function test_it_records_product_restore()
     {
         $user = User::factory()->create();
         $this->be($user);
@@ -149,10 +149,10 @@ class HistoryTest extends TestCase
 
         $expectedChanges = [
             'original' => [
-                'deleted_at'  => '2020-01-01T00:00:00.000000Z',
+                'deleted_at' => '2020-01-01T00:00:00.000000Z',
             ],
             'updated' => [
-                'deleted_at'  => null,
+                'deleted_at' => null,
             ],
         ];
 
@@ -160,7 +160,7 @@ class HistoryTest extends TestCase
         $this->assertEquals($expectedChanges, $productChange->changes);
     }
 
-    public function testItDoesNotRecordChangeWhenUpdatingAndNoUserIsAuthenticatedButLogsAWarning()
+    public function test_it_does_not_record_change_when_updating_and_no_user_is_authenticated_but_logs_a_warning()
     {
         Event::fake([
             HistoryChanged::class,
@@ -171,7 +171,7 @@ class HistoryTest extends TestCase
             ->with('Changes where made to model audunru\ModelHistory\Tests\Models\Product with ID 1, but no user was authenticated. Changes: {"original":{"description":"Old description"},"updated":{"description":"New description"}}');
 
         $product = Product::factory()->create([
-            'description'    => 'Old description',
+            'description' => 'Old description',
         ]);
 
         $product->update(['description' => 'New description']);
@@ -179,7 +179,7 @@ class HistoryTest extends TestCase
         Event::assertNotDispatched(HistoryChanged::class);
     }
 
-    public function testItDoesNotRecordChangeWhenDeletingAndNoUserIsAuthenticatedButLogsAWarning()
+    public function test_it_does_not_record_change_when_deleting_and_no_user_is_authenticated_but_logs_a_warning()
     {
         Event::fake([
             HistoryChanged::class,
@@ -198,7 +198,7 @@ class HistoryTest extends TestCase
         Event::assertNotDispatched(HistoryChanged::class);
     }
 
-    public function testItDoesNotRecordChangeWhenNothingHasChanged()
+    public function test_it_does_not_record_change_when_nothing_has_changed()
     {
         Event::fake([
             HistoryChanged::class,
@@ -207,7 +207,7 @@ class HistoryTest extends TestCase
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'description'    => 'Same description',
+            'description' => 'Same description',
         ]);
 
         $product->update(['description' => 'Same description']);
@@ -215,7 +215,7 @@ class HistoryTest extends TestCase
         Event::assertNotDispatched(HistoryChanged::class);
     }
 
-    public function testItDoesNotRecordChangeWhenChangeShouldBeIgnored()
+    public function test_it_does_not_record_change_when_change_should_be_ignored()
     {
         Event::fake([
             HistoryChanged::class,
@@ -224,7 +224,7 @@ class HistoryTest extends TestCase
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'gross_cost'     => 100,
+            'gross_cost' => 100,
         ]);
 
         $product->addIgnored('gross_cost');
@@ -234,7 +234,7 @@ class HistoryTest extends TestCase
         Event::assertNotDispatched(HistoryChanged::class);
     }
 
-    public function testItDoesNotRecordChangeWheMultipleChangesShouldBeIgnored()
+    public function test_it_does_not_record_change_whe_multiple_changes_should_be_ignored()
     {
         Event::fake([
             HistoryChanged::class,
@@ -243,8 +243,8 @@ class HistoryTest extends TestCase
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'gross_cost'     => 100,
-            'tax_rate'       => 0,
+            'gross_cost' => 100,
+            'tax_rate' => 0,
         ]);
 
         $product->addIgnored(['gross_cost', 'tax_rate']);
@@ -254,19 +254,19 @@ class HistoryTest extends TestCase
         Event::assertNotDispatched(HistoryChanged::class);
     }
 
-    public function testItChecksThatUnchangedProductHasHistorySetToFalse()
+    public function test_it_checks_that_unchanged_product_has_history_set_to_false()
     {
         $product = Product::factory()->create();
 
         $this->assertFalse($product->has_history);
     }
 
-    public function testItChecksThatChangedProductHasHistorySetToTrue()
+    public function test_it_checks_that_changed_product_has_history_set_to_true()
     {
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'description'                => 'Some description',
+            'description' => 'Some description',
         ]);
 
         $product->update(['description' => 'Some other description']);
@@ -274,16 +274,16 @@ class HistoryTest extends TestCase
         $this->assertTrue($product->has_history);
     }
 
-    public function testOnlyOwnerIsEagerLoadedByDefault()
+    public function test_only_owner_is_eager_loaded_by_default()
     {
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'description'                => 'Old description',
+            'description' => 'Old description',
         ]);
 
         $product->update([
-            'description'                => 'New description',
+            'description' => 'New description',
         ]);
 
         $change = Change::first();
@@ -292,7 +292,7 @@ class HistoryTest extends TestCase
         $this->assertFalse($change->relationLoaded('model'));
     }
 
-    public function testEagerLoadingCanBeDisabled()
+    public function test_eager_loading_can_be_disabled()
     {
         $originalOwner = config('model-history.eager_load_owner');
         $originalModel = config('model-history.eager_load_model');
@@ -303,11 +303,11 @@ class HistoryTest extends TestCase
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'description'                => 'Old description',
+            'description' => 'Old description',
         ]);
 
         $product->update([
-            'description'                => 'New description',
+            'description' => 'New description',
         ]);
 
         $change = Change::first();
@@ -319,7 +319,7 @@ class HistoryTest extends TestCase
         config(['model-history.eager_load_model' => $originalModel]);
     }
 
-    public function testEagerLoadingCanBeEnabled()
+    public function test_eager_loading_can_be_enabled()
     {
         $originalOwner = config('model-history.eager_load_owner');
         $originalModel = config('model-history.eager_load_model');
@@ -330,11 +330,11 @@ class HistoryTest extends TestCase
         $user = User::factory()->create();
         $this->be($user);
         $product = Product::factory()->create([
-            'description'                => 'Old description',
+            'description' => 'Old description',
         ]);
 
         $product->update([
-            'description'                => 'New description',
+            'description' => 'New description',
         ]);
 
         $change = Change::first();
@@ -346,20 +346,20 @@ class HistoryTest extends TestCase
         config(['model-history.eager_load_model' => $originalModel]);
     }
 
-    public function testTableNameIsHistoryByDefault()
+    public function test_table_name_is_history_by_default()
     {
-        $change = new Change();
+        $change = new Change;
 
         $this->assertEquals('history', $change->getTable());
     }
 
-    public function testTableNameCanBeChanged()
+    public function test_table_name_can_be_changed()
     {
         $originalTable = config('model-history.history_table_name');
 
         config(['model-history.history_table_name' => 'other-table']);
 
-        $change = new Change();
+        $change = new Change;
 
         $this->assertEquals('other-table', $change->getTable());
 

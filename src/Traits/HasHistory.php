@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 /**
- * @mixin \Illuminate\Database\Eloquent\Model
+ * @mixin Model
  */
 trait HasHistory
 {
@@ -73,8 +73,7 @@ trait HasHistory
     /**
      * Set the ignored attributes for the model.
      *
-     * @param string[] $ignored
-     *
+     * @param  string[]  $ignored
      * @return $this
      */
     public function setIgnored(array $ignored): self
@@ -87,8 +86,7 @@ trait HasHistory
     /**
      * Ignore a field.
      *
-     * @param string[]|string $field
-     *
+     * @param  string[]|string  $field
      * @return $this
      */
     public function addIgnored(array|string $field): self
@@ -161,7 +159,7 @@ trait HasHistory
         $original->setAttribute($this->getDeletedAtColumn(), null);
         $updated->setAttribute($this->getDeletedAtColumn(), $this->getAttribute($this->getDeletedAtColumn()));
 
-        return collect(['original' => $original, 'updated' =>  $updated]);
+        return collect(['original' => $original, 'updated' => $updated]);
     }
 
     /**

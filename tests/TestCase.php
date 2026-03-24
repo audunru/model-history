@@ -20,7 +20,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('app.debug', 'true' === env('APP_DEBUG'));
+        $app['config']->set('app.debug', env('APP_DEBUG') === 'true');
         $app['config']->set('app.key', substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyz', 5)), 0, 32));
         $app->register(ModelHistoryServiceProvider::class);
     }
@@ -42,6 +42,6 @@ abstract class TestCase extends BaseTestCase
         $this->artisan('migrate');
 
         include_once __DIR__.'/../database/migrations/create_model_history_table.php.stub';
-        (new CreateModelHistoryTable())->up();
+        (new CreateModelHistoryTable)->up();
     }
 }
