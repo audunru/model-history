@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/audunru/model-history/compare/v3.0.5...v4.0.0) (2026-03-24)
+
+
+### Features
+
+* laravel 13 support ([#88](https://github.com/audunru/model-history/issues/88)) ([b247281](https://github.com/audunru/model-history/commit/b24728121e7e1e84903e91eac9cf611ff466cf68))
+
+
+### BREAKING CHANGES
+
+* Laravel 13 is now the minimum required version, which also means PHP 8.3 is required
+
 ## [3.0.5](https://github.com/audunru/model-history/compare/v3.0.4...v3.0.5) (2025-11-15)
 
 
