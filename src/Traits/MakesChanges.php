@@ -3,10 +3,11 @@
 namespace audunru\ModelHistory\Traits;
 
 use audunru\ModelHistory\Models\Change;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * @mixin \Illuminate\Database\Eloquent\Model
+ * @mixin Model
  */
 trait MakesChanges
 {

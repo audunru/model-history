@@ -13,8 +13,8 @@ class RecordHistoryChange
     public function handle(HistoryChanged $event): void
     {
         $event->model->addChange(new Change([
-            'changes'    => $event->changes,
-            'owner_id'   => $event->owner->id,
+            'changes' => $event->changes,
+            'owner_id' => $event->owner->id,
             'owner_type' => get_class($event->owner),
         ]));
     }

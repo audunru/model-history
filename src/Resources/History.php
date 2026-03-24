@@ -17,11 +17,11 @@ class History extends JsonResource
         $dateFormat = config('model-history.date_format', 'Y-m-d H:i:s');
 
         return [
-            'id'          => $this->id,
-            'changes'     => $this->changes,
-            'owner'       => [
-                'id'    => $this->owner?->id,
-                'name'  => $this->owner?->name,
+            'id' => $this->id,
+            'changes' => $this->changes,
+            'owner' => [
+                'id' => $this->owner?->id,
+                'name' => $this->owner?->name,
                 'email' => $this->owner?->email,
             ],
             'created_at' => $this->created_at->format($dateFormat),

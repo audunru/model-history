@@ -26,7 +26,7 @@ class Change extends Model
      * @var array
      */
     protected $casts = [
-        'changes'    => 'array',
+        'changes' => 'array',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
@@ -46,7 +46,7 @@ class Change extends Model
             'owner' => config('model-history.eager_load_owner', true),
             'model' => config('model-history.eager_load_model', false),
         ], function ($value) {
-            return true === $value;
+            return $value === true;
         }));
     }
 
