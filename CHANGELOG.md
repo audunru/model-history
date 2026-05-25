@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/audunru/model-history/compare/v4.0.0...v4.1.0) (2026-05-25)
+
+
+### Features
+
+* add Trivy security scan workflow ([#94](https://github.com/audunru/model-history/issues/94)) ([9d20214](https://github.com/audunru/model-history/commit/9d20214306fb8fc54ffa875065185b7aeadc6307))
+
 # [4.0.0](https://github.com/audunru/model-history/compare/v3.0.5...v4.0.0) (2026-03-24)
 
 
