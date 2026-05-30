@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('seller_address');
             $table->string('seller_phone')->nullable();
             $table->string('seller_identification')->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

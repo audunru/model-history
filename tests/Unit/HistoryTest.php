@@ -254,6 +254,37 @@ class HistoryTest extends TestCase
         Event::assertNotDispatched(HistoryChanged::class);
     }
 
+    public function test_it_does_not_record_change_when_only_default_ignored_field_changes()
+    {
+        Event::fake([
+            HistoryChanged::class,
+        ]);
+
+        $user = User::factory()->create();
+        $this->be($user);
+        $product = Product::factory()->create();
+
+        $product->update(['password' => 'secret']);
+
+        Event::assertNotDispatched(HistoryChanged::class);
+    }
+
+    public function test_it_records_non_sensitive_changes_but_ignores_default_ignored_fields()
+    {
+        $user = User::factory()->create();
+        $this->be($user);
+        $product = Product::factory()->create([
+            'description' => 'Old description',
+        ]);
+
+        $product->update(['description' => 'New description', 'password' => 'secret']);
+
+        $this->assertCount(1, $product->history);
+        $changes = $product->history->first()->changes;
+        $this->assertArrayHasKey('description', $changes['updated']);
+        $this->assertArrayNotHasKey('password', $changes['updated']);
+    }
+
     public function test_it_checks_that_unchanged_product_has_history_set_to_false()
     {
         $product = Product::factory()->create();
