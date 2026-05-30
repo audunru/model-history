@@ -1,3 +1,10 @@
+## [4.1.2](https://github.com/audunru/model-history/compare/v4.1.1...v4.1.2) (2026-05-30)
+
+
+### Bug Fixes
+
+* ignore password, remember_token, and api_token in history by default ([#100](https://github.com/audunru/model-history/issues/100)) ([b6c9c67](https://github.com/audunru/model-history/commit/b6c9c674fd2b44685eb441a02c89ff0bcb4014d2))
+
 ## [4.1.1](https://github.com/audunru/model-history/compare/v4.1.0...v4.1.1) (2026-05-30)
 
 
