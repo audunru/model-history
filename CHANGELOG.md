@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/audunru/model-history/compare/v4.1.0...v4.1.1) (2026-05-30)
+
+
+### Bug Fixes
+
+* log changed attribute names instead of values when no user is authenticated ([#99](https://github.com/audunru/model-history/issues/99)) ([d58155b](https://github.com/audunru/model-history/commit/d58155b4a3c5b3da813bd41508a284e935a9d33c))
+
 # [4.1.0](https://github.com/audunru/model-history/compare/v4.0.0...v4.1.0) (2026-05-25)
 
 
