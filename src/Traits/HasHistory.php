@@ -29,7 +29,8 @@ trait HasHistory
 
             if ($changes->isNotEmpty()) {
                 if (! Auth::check()) {
-                    Log::error(sprintf('Changes where made to model %s with ID %u, but no user was authenticated. Changes: %s', get_class($model), $model->id, $changes));
+                    $attributeNames = collect($changes->get('updated')->getAttributes())->keys()->implode(', ');
+                    Log::error(sprintf('Changes were made to model %s with ID %u, but no user was authenticated. Changed attributes: %s', get_class($model), $model->id, $attributeNames));
 
                     return;
                 }
@@ -43,7 +44,8 @@ trait HasHistory
 
                 if ($changes->isNotEmpty()) {
                     if (! Auth::check()) {
-                        Log::error(sprintf('Changes where made to model %s with ID %u, but no user was authenticated. Changes: %s', get_class($model), $model->id, $changes));
+                        $attributeNames = collect($changes->get('updated')->getAttributes())->keys()->implode(', ');
+                        Log::error(sprintf('Changes were made to model %s with ID %u, but no user was authenticated. Changed attributes: %s', get_class($model), $model->id, $attributeNames));
 
                         return;
                     }

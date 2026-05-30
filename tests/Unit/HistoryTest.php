@@ -168,7 +168,7 @@ class HistoryTest extends TestCase
 
         Log::shouldReceive('error')
             ->once()
-            ->with('Changes where made to model audunru\ModelHistory\Tests\Models\Product with ID 1, but no user was authenticated. Changes: {"original":{"description":"Old description"},"updated":{"description":"New description"}}');
+            ->with('Changes were made to model audunru\ModelHistory\Tests\Models\Product with ID 1, but no user was authenticated. Changed attributes: description');
 
         $product = Product::factory()->create([
             'description' => 'Old description',
@@ -187,7 +187,7 @@ class HistoryTest extends TestCase
 
         Log::shouldReceive('error')
             ->once()
-            ->with('Changes where made to model audunru\ModelHistory\Tests\Models\Product with ID 1, but no user was authenticated. Changes: {"original":{"deleted_at":null},"updated":{"deleted_at":"2020-01-01T00:00:00.000000Z"}}');
+            ->with('Changes were made to model audunru\ModelHistory\Tests\Models\Product with ID 1, but no user was authenticated. Changed attributes: deleted_at');
 
         $product = Product::factory()->create();
 
