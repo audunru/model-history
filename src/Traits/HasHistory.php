@@ -135,8 +135,10 @@ trait HasHistory
      */
     public function getHistoryChanges(): Collection
     {
-        return collect($this->getDirty())->reject(function ($newValue, string $key) {
-            return in_array($key, $this->getIgnored());
+        $ignored = [...config('model-history.default_ignored', []), ...$this->getIgnored()];
+
+        return collect($this->getDirty())->reject(function ($newValue, string $key) use ($ignored) {
+            return in_array($key, $ignored);
         })->reduce(function (Collection $carry, $newValue, string $key) {
             $original = $carry->get('original', $this->newInstance());
             $updated = $carry->get('updated', $this->newInstance());

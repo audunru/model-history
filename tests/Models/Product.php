@@ -23,6 +23,7 @@ class Product extends Model
     protected $fillable = [
         'description',
         'gross_cost',
+        'password',
         'purchased_at',
         'seller_address',
         'seller_identification',
