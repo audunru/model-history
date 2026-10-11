@@ -1,3 +1,10 @@
+## [4.1.4](https://github.com/audunru/model-history/compare/v4.1.3...v4.1.4) (2026-10-11)
+
+
+### Bug Fixes
+
+* store the morph alias of the owner in history ([#118](https://github.com/audunru/model-history/issues/118)) ([dd579d3](https://github.com/audunru/model-history/commit/dd579d3022fa2de7ed9845344e9581521d01f197))
+
 ## [4.1.3](https://github.com/audunru/model-history/compare/v4.1.2...v4.1.3) (2026-10-11)
 
 
