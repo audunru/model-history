@@ -8,6 +8,7 @@ use audunru\ModelHistory\Tests\Models\Product;
 use audunru\ModelHistory\Tests\Models\User;
 use audunru\ModelHistory\Tests\TestCase;
 use Carbon\CarbonImmutable as Carbon;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
@@ -78,6 +79,31 @@ class HistoryTest extends TestCase
         $this->assertEquals($user->id, $userChange->owner->id);
         $this->assertEquals($expectedChanges, $productChange->changes);
         $this->assertEquals($expectedChanges, $userChange->changes);
+    }
+
+    public function test_it_stores_the_morph_alias_of_the_owner()
+    {
+        Relation::enforceMorphMap([
+            'product' => Product::class,
+            'user' => User::class,
+        ]);
+
+        try {
+            $user = User::factory()->create();
+            $this->be($user);
+            $product = Product::factory()->create(['description' => 'Old description']);
+
+            $product->update(['description' => 'New description']);
+
+            $change = Change::first();
+            $this->assertEquals('product', $change->model_type);
+            $this->assertEquals('user', $change->owner_type);
+            $this->assertEquals($user->id, $change->owner->id);
+            $this->assertEquals(1, $user->changes()->count());
+        } finally {
+            Relation::requireMorphMap(false);
+            Relation::morphMap([], false);
+        }
     }
 
     public function test_it_records_all_changes_to_product()
