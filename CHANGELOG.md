@@ -1,3 +1,10 @@
+## [4.1.3](https://github.com/audunru/model-history/compare/v4.1.2...v4.1.3) (2026-10-11)
+
+
+### Bug Fixes
+
+* do not record attributes with encrypted casts in history ([#116](https://github.com/audunru/model-history/issues/116)) ([d0a6103](https://github.com/audunru/model-history/commit/d0a6103a3bcc752d2249cc9157bde3ba03047822)), closes [#115](https://github.com/audunru/model-history/issues/115)
+
 ## [4.1.2](https://github.com/audunru/model-history/compare/v4.1.1...v4.1.2) (2026-05-30)
 
 
