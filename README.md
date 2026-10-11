@@ -93,7 +93,28 @@ Available options:
      * Date format used when returning the Change model as JSON
      */
     'date_format' => 'Y-m-d H:i:s',
+    /*
+     * Attribute names that are never recorded in history, regardless of each model's own $ignored
+     * list. Override in your published config to add or remove entries.
+     */
+    'default_ignored' => [
+        'password',
+        'remember_token',
+        'api_token',
+    ],
 ```
+
+## Ignoring attributes
+
+Changes to the attributes in the `default_ignored` configuration option are never recorded. The `created_at` and `updated_at` attributes are also ignored.
+
+To ignore more attributes on a model, use `addIgnored()`:
+
+```php
+$product->addIgnored(['gross_cost', 'tax_rate']);
+```
+
+Attributes with an encrypted cast (`encrypted`, `encrypted:array`, `encrypted:collection`, `encrypted:json`, `encrypted:object`, `AsEncryptedArrayObject` and `AsEncryptedCollection`) are never recorded. If they were, the history table would contain the decrypted value.
 
 # Development
 

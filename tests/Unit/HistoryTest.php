@@ -285,6 +285,54 @@ class HistoryTest extends TestCase
         $this->assertArrayNotHasKey('password', $changes['updated']);
     }
 
+    public function test_it_does_not_record_change_when_only_encrypted_field_changes()
+    {
+        Event::fake([
+            HistoryChanged::class,
+        ]);
+
+        $user = User::factory()->create();
+        $this->be($user);
+        $product = Product::factory()->create();
+
+        $product->update(['secret_note' => 'secret']);
+
+        Event::assertNotDispatched(HistoryChanged::class);
+    }
+
+    public function test_it_does_not_record_change_when_only_encrypted_class_cast_field_changes()
+    {
+        Event::fake([
+            HistoryChanged::class,
+        ]);
+
+        $user = User::factory()->create();
+        $this->be($user);
+        $product = Product::factory()->create();
+
+        $product->update(['secret_list' => ['secret']]);
+
+        Event::assertNotDispatched(HistoryChanged::class);
+    }
+
+    public function test_it_records_non_sensitive_changes_but_ignores_encrypted_fields()
+    {
+        $user = User::factory()->create();
+        $this->be($user);
+        $product = Product::factory()->create([
+            'description' => 'Old description',
+            'secret_note' => 'Old secret',
+        ]);
+
+        $product->update(['description' => 'New description', 'secret_note' => 'New secret']);
+
+        $this->assertCount(1, $product->history);
+        $changes = $product->history->first()->changes;
+        $this->assertArrayHasKey('description', $changes['updated']);
+        $this->assertArrayNotHasKey('secret_note', $changes['original']);
+        $this->assertArrayNotHasKey('secret_note', $changes['updated']);
+    }
+
     public function test_it_checks_that_unchanged_product_has_history_set_to_false()
     {
         $product = Product::factory()->create();

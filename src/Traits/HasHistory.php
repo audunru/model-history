@@ -4,6 +4,8 @@ namespace audunru\ModelHistory\Traits;
 
 use audunru\ModelHistory\Events\HistoryChanged;
 use audunru\ModelHistory\Models\Change;
+use Illuminate\Database\Eloquent\Casts\AsEncryptedArrayObject;
+use Illuminate\Database\Eloquent\Casts\AsEncryptedCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -138,7 +140,7 @@ trait HasHistory
         $ignored = [...config('model-history.default_ignored', []), ...$this->getIgnored()];
 
         return collect($this->getDirty())->reject(function ($newValue, string $key) use ($ignored) {
-            return in_array($key, $ignored);
+            return in_array($key, $ignored) || $this->hasEncryptedCast($key);
         })->reduce(function (Collection $carry, $newValue, string $key) {
             $original = $carry->get('original', $this->newInstance());
             $updated = $carry->get('updated', $this->newInstance());
@@ -149,6 +151,21 @@ trait HasHistory
 
             return collect(['original' => $original, 'updated' => $updated]);
         }, collect());
+    }
+
+    /**
+     * Check if attribute has an encrypted cast. These attributes are never recorded in history,
+     * because the history would contain the decrypted value.
+     */
+    protected function hasEncryptedCast(string $key): bool
+    {
+        if ($this->isEncryptedCastable($key)) {
+            return true;
+        }
+
+        $cast = explode(':', $this->getCasts()[$key] ?? '', 2)[0];
+
+        return in_array($cast, [AsEncryptedArrayObject::class, AsEncryptedCollection::class]);
     }
 
     /**

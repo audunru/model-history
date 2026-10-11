@@ -24,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->string('seller_phone')->nullable();
             $table->string('seller_identification')->nullable();
             $table->string('password')->nullable();
+            $table->text('secret_note')->nullable();
+            $table->text('secret_list')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
