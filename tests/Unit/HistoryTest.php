@@ -5,6 +5,7 @@ namespace audunru\ModelHistory\Tests\Unit;
 use audunru\ModelHistory\Events\HistoryChanged;
 use audunru\ModelHistory\Models\Change;
 use audunru\ModelHistory\Tests\Models\Product;
+use audunru\ModelHistory\Tests\Models\ProductWithHiddenAttribute;
 use audunru\ModelHistory\Tests\Models\User;
 use audunru\ModelHistory\Tests\TestCase;
 use Carbon\CarbonImmutable as Carbon;
@@ -357,6 +358,39 @@ class HistoryTest extends TestCase
         $this->assertArrayHasKey('description', $changes['updated']);
         $this->assertArrayNotHasKey('secret_note', $changes['original']);
         $this->assertArrayNotHasKey('secret_note', $changes['updated']);
+    }
+
+    public function test_it_does_not_record_hidden_attributes()
+    {
+        $user = User::factory()->create();
+        $this->be($user);
+        $id = Product::factory()->create([
+            'description' => 'Old description',
+            'seller_phone' => 'Old seller phone',
+        ])->id;
+        $product = ProductWithHiddenAttribute::find($id);
+
+        $product->update(['description' => 'New description', 'seller_phone' => 'New seller phone']);
+
+        $this->assertEquals([
+            'original' => ['description' => 'Old description'],
+            'updated' => ['description' => 'New description'],
+        ], $product->history->first()->changes);
+    }
+
+    public function test_it_records_an_empty_change_when_only_a_hidden_attribute_changes()
+    {
+        $user = User::factory()->create();
+        $this->be($user);
+        $id = Product::factory()->create(['seller_phone' => 'Old seller phone'])->id;
+        $product = ProductWithHiddenAttribute::find($id);
+
+        $product->update(['seller_phone' => 'New seller phone']);
+
+        $this->assertCount(1, $product->history);
+        $change = $product->history->first();
+        $this->assertEquals(['original' => [], 'updated' => []], $change->changes);
+        $this->assertEquals($user->id, $change->owner->id);
     }
 
     public function test_it_checks_that_unchanged_product_has_history_set_to_false()
