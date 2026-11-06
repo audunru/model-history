@@ -66,6 +66,20 @@ $product->update([
 dump($product->changes);
 ```
 
+## Step 5: Return history as JSON (optional)
+
+The package includes a `History` API resource for `Change` models:
+
+```php
+use audunru\ModelHistory\Resources\History;
+
+return History::collection($product->history);
+```
+
+Each item contains `id`, `changes`, `owner` (`id`, `name` and `email` of the user who made the change), `created_at` and `updated_at`.
+
+Note that the resource shows the email address of each user who changed the model. If you give the history to other users, for example to everyone who can see a product, they also see these email addresses. If you do not want this, write your own `JsonResource` for the `Change` model and use it instead of `History`.
+
 # Configuration
 
 Publish the configuration file by running:
@@ -115,6 +129,8 @@ $product->addIgnored(['gross_cost', 'tax_rate']);
 ```
 
 Attributes with an encrypted cast (`encrypted`, `encrypted:array`, `encrypted:collection`, `encrypted:json`, `encrypted:object`, `AsEncryptedArrayObject` and `AsEncryptedCollection`) are never recorded. If they were, the history table would contain the decrypted value.
+
+Attributes in the model's `$hidden` array are not recorded either. The changes are serialised before they are stored, and serialisation removes hidden attributes. If only hidden attributes change, the history still gets an entry with the user who made the change, but with no attributes in `original` and `updated`.
 
 # Development
 
