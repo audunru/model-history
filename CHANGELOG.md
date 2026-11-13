@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/audunru/model-history/compare/v4.1.4...v4.2.0) (2026-11-13)
+
+
+### Features
+
+* record changes without an authenticated user when enabled ([#126](https://github.com/audunru/model-history/issues/126)) ([11e5735](https://github.com/audunru/model-history/commit/11e57350b80663e31c44dc3347304d0d96c5c94f))
+
 ## [4.1.4](https://github.com/audunru/model-history/compare/v4.1.3...v4.1.4) (2026-10-11)
 
 
