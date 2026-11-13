@@ -22,6 +22,8 @@ php artisan vendor:publish --tag=model-history-migrations
 php artisan migrate
 ```
 
+The migrations are `create_model_history_table` and `make_owner_nullable_in_history_table`. The second migration makes the `owner_id` and `owner_type` columns nullable. If you installed an earlier version of the package, run the two commands again to get the new migration. The command does not overwrite the migrations that you published before.
+
 ## Step 3: Add traits to your models
 
 Add the `MakesChanges` trait to your `User` model:
@@ -116,7 +118,22 @@ Available options:
         'remember_token',
         'api_token',
     ],
+    /*
+     * Record changes when no user is authenticated, for example from artisan commands, queued jobs
+     * and seeders. The change is stored with no owner. Requires nullable owner columns.
+     */
+    'record_changes_without_owner' => false,
 ```
+
+## Changes with no authenticated user
+
+By default, a change is recorded only when a user is authenticated. Changes from artisan commands, queued jobs, seeders, the scheduler and guest requests are not recorded. The package logs an error for each change that it does not record.
+
+To record these changes, set `record_changes_without_owner` to `true`. The change is then recorded with `owner_id` and `owner_type` set to `null`, and the package does not log an error. The `History` resource shows `owner` with `null` values for `id`, `name` and `email`.
+
+The `owner_id` and `owner_type` columns must be nullable. Run the `make_owner_nullable_in_history_table` migration before you enable the option (see [Step 2](#step-2-publish-and-run-migrations)).
+
+A rollback of this migration makes the owner columns NOT NULL again. The rollback fails while the history table has rows with no owner. Before you roll back, delete these rows or give them an owner.
 
 ## Ignoring attributes
 

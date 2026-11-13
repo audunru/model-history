@@ -27,8 +27,8 @@ class HistoryChanged
          */
         public Model $model,
         /*
-         * The model that made the change.
+         * The model that made the change, or null if no user was authenticated.
          */
-        public Model $owner,
+        public ?Model $owner,
     ) {}
 }

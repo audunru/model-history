@@ -225,6 +225,58 @@ class HistoryTest extends TestCase
         Event::assertNotDispatched(HistoryChanged::class);
     }
 
+    public function test_it_records_change_without_owner_when_updating_and_no_user_is_authenticated_if_enabled()
+    {
+        $original = config('model-history.record_changes_without_owner');
+        config(['model-history.record_changes_without_owner' => true]);
+
+        Log::shouldReceive('error')->never();
+
+        $product = Product::factory()->create([
+            'description' => 'Old description',
+        ]);
+
+        $product->update(['description' => 'New description']);
+
+        $this->assertCount(1, $product->history);
+        $change = $product->history->first();
+        $this->assertNull($change->owner_id);
+        $this->assertNull($change->owner_type);
+        $this->assertNull($change->owner);
+        $this->assertEquals([
+            'original' => ['description' => 'Old description'],
+            'updated' => ['description' => 'New description'],
+        ], $change->changes);
+
+        config(['model-history.record_changes_without_owner' => $original]);
+    }
+
+    public function test_it_records_change_without_owner_when_deleting_and_no_user_is_authenticated_if_enabled()
+    {
+        $original = config('model-history.record_changes_without_owner');
+        config(['model-history.record_changes_without_owner' => true]);
+
+        Log::shouldReceive('error')->never();
+
+        $product = Product::factory()->create();
+
+        $this->travelTo(Carbon::create(2020, 1, 1, 0, 0, 0, 'UTC'));
+        $product = $product->fresh();
+        $product->delete();
+
+        $this->assertCount(1, $product->history);
+        $change = $product->history->first();
+        $this->assertNull($change->owner_id);
+        $this->assertNull($change->owner_type);
+        $this->assertNull($change->owner);
+        $this->assertEquals([
+            'original' => ['deleted_at' => null],
+            'updated' => ['deleted_at' => '2020-01-01T00:00:00.000000Z'],
+        ], $change->changes);
+
+        config(['model-history.record_changes_without_owner' => $original]);
+    }
+
     public function test_it_does_not_record_change_when_nothing_has_changed()
     {
         Event::fake([

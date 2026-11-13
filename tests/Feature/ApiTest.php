@@ -110,6 +110,33 @@ class ApiTest extends TestCase
             ]]]);
     }
 
+    public function test_it_gets_history_with_a_change_without_owner()
+    {
+        $original = config('model-history.record_changes_without_owner');
+        config(['model-history.record_changes_without_owner' => true]);
+
+        Carbon::setTestNow(Carbon::parse('2019-10-13 12:14:00'));
+        $this->app['auth']->forgetGuards();
+        $this->product->fresh()->update(['description' => 'Newer description']);
+
+        $response = $this->json('GET', '/history');
+
+        $response
+            ->assertOk()
+            ->assertJsonCount(2, 'data')
+            ->assertJsonPath('data.0.owner', [
+                'id' => null,
+                'name' => null,
+                'email' => null,
+            ])
+            ->assertJsonPath('data.0.changes', [
+                'original' => ['description' => 'New description'],
+                'updated' => ['description' => 'Newer description'],
+            ]);
+
+        config(['model-history.record_changes_without_owner' => $original]);
+    }
+
     public function test_it_changes_the_date_format()
     {
         $originalDateFormat = config('model-history.date_format');

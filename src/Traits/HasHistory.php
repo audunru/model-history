@@ -30,7 +30,7 @@ trait HasHistory
             $changes = $model->getHistoryChanges();
 
             if ($changes->isNotEmpty()) {
-                if (! Auth::check()) {
+                if (! Auth::check() && ! config('model-history.record_changes_without_owner', false)) {
                     $attributeNames = collect($changes->get('updated')->getAttributes())->keys()->implode(', ');
                     Log::error(sprintf('Changes were made to model %s with ID %u, but no user was authenticated. Changed attributes: %s', get_class($model), $model->id, $attributeNames));
 
@@ -45,7 +45,7 @@ trait HasHistory
                 $changes = $model->getSoftDeletedChanges();
 
                 if ($changes->isNotEmpty()) {
-                    if (! Auth::check()) {
+                    if (! Auth::check() && ! config('model-history.record_changes_without_owner', false)) {
                         $attributeNames = collect($changes->get('updated')->getAttributes())->keys()->implode(', ');
                         Log::error(sprintf('Changes were made to model %s with ID %u, but no user was authenticated. Changed attributes: %s', get_class($model), $model->id, $attributeNames));
 

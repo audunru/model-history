@@ -26,4 +26,9 @@ return [
         'remember_token',
         'api_token',
     ],
+    /*
+     * Record changes when no user is authenticated, for example from artisan commands, queued jobs
+     * and seeders. The change is stored with no owner. Requires nullable owner columns.
+     */
+    'record_changes_without_owner' => false,
 ];

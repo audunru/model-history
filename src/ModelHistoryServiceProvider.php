@@ -15,7 +15,7 @@ class ModelHistoryServiceProvider extends PackageServiceProvider
         $package
             ->name('model-history')
             ->hasConfigFile()
-            ->hasMigration('create_model_history_table');
+            ->hasMigrations('create_model_history_table', 'make_owner_nullable_in_history_table');
     }
 
     public function packageBooted()
