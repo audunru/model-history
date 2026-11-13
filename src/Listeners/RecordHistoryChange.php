@@ -14,8 +14,8 @@ class RecordHistoryChange
     {
         $event->model->addChange(new Change([
             'changes' => $event->changes,
-            'owner_id' => $event->owner->id,
-            'owner_type' => $event->owner->getMorphClass(),
+            'owner_id' => $event->owner?->id,
+            'owner_type' => $event->owner?->getMorphClass(),
         ]));
     }
 }
