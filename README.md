@@ -133,6 +133,8 @@ To record these changes, set `record_changes_without_owner` to `true`. The chang
 
 The `owner_id` and `owner_type` columns must be nullable. Run the `make_owner_nullable_in_history_table` migration before you enable the option (see [Step 2](#step-2-publish-and-run-migrations)).
 
+A rollback of this migration makes the owner columns NOT NULL again. The rollback fails while the history table has rows with no owner. Before you roll back, delete these rows or give them an owner.
+
 ## Ignoring attributes
 
 Changes to the attributes in the `default_ignored` configuration option are never recorded. The `created_at` and `updated_at` attributes are also ignored.
