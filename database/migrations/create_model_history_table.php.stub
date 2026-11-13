@@ -25,8 +25,8 @@ class CreateModelHistoryTable extends Migration
             $table->json('changes');
             $table->integer('model_id')->unsigned();
             $table->string('model_type');
-            $table->integer('owner_id')->unsigned();
-            $table->string('owner_type');
+            $table->integer('owner_id')->unsigned()->nullable();
+            $table->string('owner_type')->nullable();
             $table->timestamps();
         });
     }
